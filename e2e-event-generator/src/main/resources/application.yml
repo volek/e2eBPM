@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: e2e-event-generator
+
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+      properties:
+        enable.idempotence: true
+        acks: all
+
+  jackson:
+    default-property-inclusion: always
+
+generator:
+  command: ${GENERATOR_COMMAND:run}
+  scenario: ${GENERATOR_SCENARIO:full-poc}
+  mode: ${GENERATOR_MODE:BATCH}
+  seed: ${GENERATOR_SEED:1001}
+
+  kafka:
+    topics:
+      flow-models: ${FLOW_MODEL_TOPIC:model-update-event}
+      flow-instances: ${FLOW_INSTANCE_TOPIC:instance-update-event}
+      legacy-instances: ${LEGACY_TOPIC:legacy-events}
+
+  headers:
+    flow-model:
+      ce-type: ${FLOW_MODEL_CE_TYPE:}
+      ce-source: ${FLOW_CE_SOURCE:}
+    flow-instance:
+      ce-type: ${FLOW_INSTANCE_CE_TYPE:}
+      ce-source: ${FLOW_CE_SOURCE:}
+    legacy-instance:
+      ce-type: ${LEGACY_INSTANCE_CE_TYPE:poc.legacy.instance}
+      ce-source: ${LEGACY_CE_SOURCE:poc.legacy.generator}
+
+    ce-specversion: ${CE_SPEC_VERSION:}

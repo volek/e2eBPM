@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  kafka:
+    image: ${KAFKA_IMAGE:?Set KAFKA_IMAGE to an approved Kafka image}
+    environment:
+      # Fill variables required by the approved Kafka image.
+      KAFKA_PLACEHOLDER: "configure-me"
+    ports:
+      - "9092:9092"
+
+  generator:
+    build:
+      context: .
+      args:
+        BUILD_JDK11_IMAGE: ${BUILD_JDK11_IMAGE:?Set BUILD_JDK11_IMAGE}
+        RUNTIME_JRE11_IMAGE: ${RUNTIME_JRE11_IMAGE:?Set RUNTIME_JRE11_IMAGE}
+    depends_on:
+      - kafka
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+
+      FLOW_MODEL_TOPIC: model-update-event
+      FLOW_INSTANCE_TOPIC: instance-update-event
+      LEGACY_TOPIC: legacy-events
+
+      FLOW_MODEL_CE_TYPE: ${FLOW_MODEL_CE_TYPE:-}
+      FLOW_INSTANCE_CE_TYPE: ${FLOW_INSTANCE_CE_TYPE:-}
+      FLOW_CE_SOURCE: ${FLOW_CE_SOURCE:-}
+      CE_SPEC_VERSION: ${CE_SPEC_VERSION:-}
+
+      LEGACY_INSTANCE_CE_TYPE: ${LEGACY_INSTANCE_CE_TYPE:-poc.legacy.instance}
+      LEGACY_CE_SOURCE: ${LEGACY_CE_SOURCE:-poc.legacy.generator}

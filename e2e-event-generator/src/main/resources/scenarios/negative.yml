@@ -1,0 +1,41 @@
+name: negative
+seed: 2001
+
+timing:
+  delayMsBetweenSnapshots: 100
+  jitterMs: 0
+
+processes:
+  - id: Process_A
+    definitionId: "Process_A:1:poc-a-v1"
+    name: Loan Application
+    version: 1
+    bpmnResource: bpmn/process-a.bpmn
+    moduleId: bpmx
+    instanceCount: 8
+    correlationVariable: applicationId
+    nodes:
+      - { id: Event_A_Start, name: Start, type: startEvent }
+      - { id: Activity_A_Approved, name: Approved, type: serviceTask }
+      - { id: Event_A_End, name: End, type: endEvent }
+
+legacy:
+  - id: Legacy_Scoring
+    definitionId: "Legacy_Scoring:1:poc-legacy-v1"
+    name: Credit Scoring AS
+    moduleId: legacy-scoring-emulator
+    instanceCount: 8
+    correlationVariable: applicationRef
+    nodes:
+      - { id: Legacy_Score_Start, name: SCORE_START, type: externalTask }
+      - { id: Legacy_Score_OK, name: SCORE_OK, type: externalTask }
+
+cases:
+  happy: 1
+  delayedLegacy: 1
+  missingLegacy: 1
+  missingProcessB: 1
+  failedProcess: 1
+  duplicateEvent: 1
+  ambiguous: 1
+  invalidContract: 1

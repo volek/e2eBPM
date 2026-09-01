@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             targetNamespace="http://example.com/e2e-poc">
+  <process id="Process_A" name="Loan Application" isExecutable="true">
+    <startEvent id="Event_A_Start" name="Start"/>
+    <sequenceFlow id="Flow_A_1" sourceRef="Event_A_Start" targetRef="Activity_A_Validate"/>
+    <serviceTask id="Activity_A_Validate" name="Validate"/>
+    <sequenceFlow id="Flow_A_2" sourceRef="Activity_A_Validate" targetRef="Activity_A_Approved"/>
+    <serviceTask id="Activity_A_Approved" name="Approved"/>
+    <sequenceFlow id="Flow_A_3" sourceRef="Activity_A_Approved" targetRef="Event_A_End"/>
+    <endEvent id="Event_A_End" name="End"/>
+  </process>
+</definitions>

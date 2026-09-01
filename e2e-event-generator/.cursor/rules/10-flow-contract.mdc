@@ -1,0 +1,24 @@
+---
+description: Flow contract rules
+alwaysApply: true
+---
+
+`docs/reference/Flow_contract.pdf` is canonical for generated Flow payloads.
+
+Rules:
+- ProcessModelEvent goes only to model topic.
+- ProcessInstanceEvent goes only to instance topic.
+- Required does not imply non-null.
+- Required nullable property must remain present as JSON null.
+- variables is arbitrary nested JSON object.
+- extIds is object or null.
+- Separate ProcessState and NodeState enums.
+- Do not invent Flow contract field names.
+- Serialize `instancesSuspended`, not typo `instansesSuspended`.
+- Common headers:
+  ce_type
+  ce_source
+  ce_specversion
+  ce_time
+  ce_id
+- Do not hardcode unknown production values of ce_type/source/specversion.

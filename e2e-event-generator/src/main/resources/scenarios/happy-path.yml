@@ -1,0 +1,49 @@
+name: happy-path
+seed: 1001
+
+timing:
+  delayMsBetweenSnapshots: 100
+  jitterMs: 0
+
+processes:
+  - id: Process_A
+    definitionId: "Process_A:1:poc-a-v1"
+    name: Loan Application
+    version: 1
+    bpmnResource: bpmn/process-a.bpmn
+    moduleId: bpmx
+    instanceCount: 10
+    correlationVariable: applicationId
+    nodes:
+      - { id: Event_A_Start, name: Start, type: startEvent }
+      - { id: Activity_A_Validate, name: Validate, type: serviceTask }
+      - { id: Activity_A_Approved, name: Approved, type: serviceTask }
+      - { id: Event_A_End, name: End, type: endEvent }
+
+  - id: Process_B
+    definitionId: "Process_B:1:poc-b-v1"
+    name: Contract Preparation
+    version: 1
+    bpmnResource: bpmn/process-b.bpmn
+    moduleId: bpmx
+    instanceCount: 10
+    correlationVariable: creditApplicationId
+    nodes:
+      - { id: Event_B_Start, name: Start, type: startEvent }
+      - { id: Activity_B_Prepare, name: Prepare Contract, type: serviceTask }
+      - { id: Activity_B_Sign, name: Sign, type: userTask }
+      - { id: Event_B_End, name: End, type: endEvent }
+
+legacy:
+  - id: Legacy_Scoring
+    definitionId: "Legacy_Scoring:1:poc-legacy-v1"
+    name: Credit Scoring AS
+    moduleId: legacy-scoring-emulator
+    instanceCount: 10
+    correlationVariable: applicationRef
+    nodes:
+      - { id: Legacy_Score_Start, name: SCORE_START, type: externalTask }
+      - { id: Legacy_Score_OK, name: SCORE_OK, type: externalTask }
+
+cases:
+  happy: 10

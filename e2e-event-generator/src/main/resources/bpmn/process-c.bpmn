@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             targetNamespace="http://example.com/e2e-poc">
+  <process id="Process_C" name="Finalization" isExecutable="true">
+    <startEvent id="Event_C_Start" name="Start"/>
+    <sequenceFlow id="Flow_C_1" sourceRef="Event_C_Start" targetRef="Activity_C_Finalize"/>
+    <serviceTask id="Activity_C_Finalize" name="Finalize"/>
+    <sequenceFlow id="Flow_C_2" sourceRef="Activity_C_Finalize" targetRef="Event_C_End"/>
+    <endEvent id="Event_C_End" name="End"/>
+  </process>
+</definitions>

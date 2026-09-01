@@ -1,0 +1,24 @@
+---
+description: Kafka producer rules
+alwaysApply: true
+---
+
+Three independent logical topics:
+1. Flow models
+2. Flow instances
+3. Legacy instances
+
+Topic names must be configuration values.
+
+Record key:
+- ProcessModelEvent -> processDefinitionId
+- ProcessInstanceEvent -> id
+- Legacy ProcessInstanceEvent -> id
+
+CloudEvents metadata is Kafka headers.
+Payload is JSON.
+
+Log successful send metadata:
+topic, partition, offset, ce_id, processId, processInstanceId.
+
+Do not silently swallow send errors.

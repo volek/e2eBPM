@@ -1,0 +1,21 @@
+---
+description: Testing baseline
+alwaysApply: true
+---
+
+Use:
+- JUnit Jupiter 5.8.0-M1
+- SpringMockK 3.1.0
+- spring-kafka-test 2.7.0
+- Embedded Kafka
+
+Do not add Testcontainers automatically because its version is not pinned in versions.md.
+
+Contract fixtures should be derived from Flow contract examples.
+Tests must verify:
+- topic
+- key
+- CloudEvents headers
+- JSON payload
+- snapshot ordering
+- deterministic seed

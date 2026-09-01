@@ -1,0 +1,34 @@
+name: load-smoke
+seed: 3001
+
+timing:
+  delayMsBetweenSnapshots: 0
+  jitterMs: 0
+
+processes:
+  - id: Process_A
+    definitionId: "Process_A:1:poc-a-v1"
+    name: Loan Application
+    version: 1
+    bpmnResource: bpmn/process-a.bpmn
+    moduleId: bpmx
+    instanceCount: 1000
+    correlationVariable: applicationId
+    nodes:
+      - { id: Event_A_Start, name: Start, type: startEvent }
+      - { id: Activity_A_Approved, name: Approved, type: serviceTask }
+      - { id: Event_A_End, name: End, type: endEvent }
+
+legacy:
+  - id: Legacy_Scoring
+    definitionId: "Legacy_Scoring:1:poc-legacy-v1"
+    name: Credit Scoring AS
+    moduleId: legacy-scoring-emulator
+    instanceCount: 1000
+    correlationVariable: applicationRef
+    nodes:
+      - { id: Legacy_Score_Start, name: SCORE_START, type: externalTask }
+      - { id: Legacy_Score_OK, name: SCORE_OK, type: externalTask }
+
+cases:
+  happy: 1000

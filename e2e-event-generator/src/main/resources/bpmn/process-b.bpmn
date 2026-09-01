@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             targetNamespace="http://example.com/e2e-poc">
+  <process id="Process_B" name="Contract Preparation" isExecutable="true">
+    <startEvent id="Event_B_Start" name="Start"/>
+    <sequenceFlow id="Flow_B_1" sourceRef="Event_B_Start" targetRef="Activity_B_Prepare"/>
+    <serviceTask id="Activity_B_Prepare" name="Prepare Contract"/>
+    <sequenceFlow id="Flow_B_2" sourceRef="Activity_B_Prepare" targetRef="Activity_B_Sign"/>
+    <userTask id="Activity_B_Sign" name="Sign"/>
+    <sequenceFlow id="Flow_B_3" sourceRef="Activity_B_Sign" targetRef="Event_B_End"/>
+    <endEvent id="Event_B_End" name="End"/>
+  </process>
+</definitions>
