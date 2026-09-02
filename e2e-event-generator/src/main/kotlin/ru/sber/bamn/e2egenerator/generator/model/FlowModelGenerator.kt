@@ -3,16 +3,15 @@ package ru.sber.bamn.e2egenerator.generator.model
 import org.springframework.core.io.ClassPathResource
 import org.springframework.stereotype.Component
 import ru.sber.bamn.e2egenerator.contract.ProcessModelEvent
+import ru.sber.bamn.e2egenerator.generator.common.GenerationContext
 import ru.sber.bamn.e2egenerator.scenario.ProcessDefinition
 import java.nio.charset.StandardCharsets
-import java.time.OffsetDateTime
-import java.time.ZoneOffset
 import java.util.Base64
 
 @Component
 class FlowModelGenerator {
 
-    fun generate(definition: ProcessDefinition): ProcessModelEvent {
+    fun generate(definition: ProcessDefinition, context: GenerationContext): ProcessModelEvent {
         val bpmn = ClassPathResource(definition.bpmnResource)
             .inputStream
             .bufferedReader(StandardCharsets.UTF_8)
@@ -38,7 +37,7 @@ class FlowModelGenerator {
             suspended = false,
             retryPolicyModels = emptyList(),
             operation = null,
-            created = OffsetDateTime.now(ZoneOffset.UTC).toString(),
+            created = context.timestamp(),
             tags = emptyMap(),
             maskPatterns = emptyList()
         )

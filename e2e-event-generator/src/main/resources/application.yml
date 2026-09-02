@@ -21,6 +21,7 @@ generator:
   scenario: ${GENERATOR_SCENARIO:full-poc}
   mode: ${GENERATOR_MODE:BATCH}
   seed: ${GENERATOR_SEED:1001}
+  continuous-delay-ms: ${GENERATOR_CONTINUOUS_DELAY_MS:5000}
 
   kafka:
     topics:

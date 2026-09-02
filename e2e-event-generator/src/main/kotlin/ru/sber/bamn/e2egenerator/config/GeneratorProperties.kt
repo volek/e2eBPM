@@ -10,6 +10,7 @@ class GeneratorProperties {
     var scenario: String = "full-poc"
     var mode: String = "BATCH"
     var seed: Long = 1001
+    var continuousDelayMs: Long = 5000
 
     var kafka: Kafka = Kafka()
     var headers: Headers = Headers()

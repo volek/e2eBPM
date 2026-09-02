@@ -109,6 +109,8 @@ build/libs/e2e-event-generator.jar
 
 ## Запуск JAR
 
+Подробно: [`docs/RUN_AND_CONFIG.md`](docs/RUN_AND_CONFIG.md) — все параметры, env, сценарии и примеры.
+
 ```bash
 java -jar build/libs/e2e-event-generator.jar \
   --generator.command=run \

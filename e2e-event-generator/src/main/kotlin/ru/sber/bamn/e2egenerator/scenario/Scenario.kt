@@ -47,6 +47,7 @@ data class CaseDistribution(
     val delayedLegacy: Int = 0,
     val missingLegacy: Int = 0,
     val missingProcessB: Int = 0,
+    val retry: Int = 0,
     val failedProcess: Int = 0,
     val duplicateEvent: Int = 0,
     val ambiguous: Int = 0,

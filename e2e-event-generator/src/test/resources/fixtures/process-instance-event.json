@@ -1,0 +1,35 @@
+{
+  "id": "11111111-1111-1111-1111-111111111111",
+  "parentInstanceId": null,
+  "rootInstanceId": "11111111-1111-1111-1111-111111111111",
+  "processId": "Process_A",
+  "processDefinitionId": "Process_A:1:poc-a-v1",
+  "resourceName": null,
+  "rootProcessId": "Process_A",
+  "processName": "Loan Application",
+  "startDate": "2020-09-13T12:26:40Z",
+  "endDate": null,
+  "state": 1,
+  "businessKey": "APP-0001",
+  "version": 1,
+  "bamProjectId": null,
+  "extIds": null,
+  "error": null,
+  "moduleId": "bpmx",
+  "engineVersion": null,
+  "enginePodName": null,
+  "retryCount": 0,
+  "ownerRole": null,
+  "idempotencyKey": null,
+  "operation": null,
+  "nodeInstances": [],
+  "variables": {
+    "applicationId": "APP-0001",
+    "nested": {
+      "level1": {
+        "level2": "value"
+      }
+    }
+  },
+  "contextSize": null
+}

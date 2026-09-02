@@ -1,0 +1,22 @@
+{
+  "processId": "Process_A",
+  "processDefinitionId": "Process_A:1:poc-a-v1",
+  "resourceName": null,
+  "processName": "Loan Application",
+  "processVersion": "1",
+  "businessFamily": null,
+  "ownerRole": null,
+  "contextVisible": true,
+  "processVersionInternal": "1",
+  "schema": "UE9DCQ==",
+  "moduleId": "bpmx",
+  "bamProjectId": null,
+  "deleteReason": null,
+  "instancesSuspended": false,
+  "suspended": false,
+  "retryPolicyModels": [],
+  "operation": null,
+  "created": "2020-09-13T12:26:40Z",
+  "tags": {},
+  "maskPatterns": []
+}

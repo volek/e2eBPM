@@ -63,6 +63,7 @@ cases:
   delayedLegacy: 1
   missingLegacy: 1
   missingProcessB: 1
+  retry: 1
   failedProcess: 1
   duplicateEvent: 1
   ambiguous: 1

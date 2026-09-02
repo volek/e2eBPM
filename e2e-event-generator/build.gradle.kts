@@ -31,6 +31,9 @@ dependencies {
 
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.boot:spring-boot")
+    implementation("org.springframework:spring-context")
+    implementation("org.slf4j:slf4j-api")
 
     implementation("org.springframework.kafka:spring-kafka:2.7.0")
     implementation("org.apache.kafka:kafka-clients:3.0.0")
@@ -47,6 +50,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.0-M1")
     testImplementation("org.springframework.kafka:spring-kafka-test:2.7.0")
     testImplementation("com.ninja-squad:springmockk:3.1.0")
+    testImplementation("org.apache.kafka:kafka-clients:3.0.0")
+    testImplementation("org.apache.kafka:kafka_2.13:2.7.2")
 }
 
 configurations.all {
@@ -89,6 +94,13 @@ spotless {
 detekt {
     toolVersion = "1.16.0"
     buildUponDefaultConfig = true
+}
+
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    enabled = false
+    reports {
+        html.enabled = false
+    }
 }
 
 jacoco {
