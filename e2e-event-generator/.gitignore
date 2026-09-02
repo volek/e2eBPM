@@ -1,6 +1,10 @@
 .gradle/
-build/
+build/*
+!build/libs/
+build/libs/*
+!build/libs/e2e-event-generator.jar
 out/
 .idea/
 *.iml
 .DS_Store
+.cursor/
